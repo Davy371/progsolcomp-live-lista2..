@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class ArqueologiaApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Entre com a descrição do artefato: ");
+        String descricaoArtefato = scanner.nextLine();
+
+        System.out.print("Entre com o tipo do artefato (1 - Arma ou tecnologia similar de metal, 2 - Ferramentas ou utensílios domésticos, 3 - Artefato desconhecido): ");
+        int tipoArtefato = scanner.nextInt();
+
+        System.out.print("Entre com o percentual de carbono-14: ");
+        int percentualCarbono14 = scanner.nextInt();
+
+        String periodoAproximado = calcularPeriodoAproximado(percentualCarbono14);
+        String pesquisadorResponsavel = escolherPesquisador(periodoAproximado, tipoArtefato);
+
+        System.out.println("\nDescrição do artefato: " + descricaoArtefato);
+        System.out.println("Tipo do artefato: " + obterTipoArtefato(tipoArtefato));
+        System.out.println("Período aproximado do artefato: " + periodoAproximado);
+        System.out.println("Pesquisador responsável: " + pesquisadorResponsavel);
+
+        scanner.close();
+    }
+
+    public static String calcularPeriodoAproximado(int percentualCarbono14) {
+        if (percentualCarbono14 >= 90) {
+            return "Idade moderna";
+        } else if (percentualCarbono14 >= 40) {
+            return "Idade Média";
+        } else if (percentualCarbono14 >= 15) {
+            return "Idade do Bronze";
+        } else if (percentualCarbono14 >= 5) {
+            return "Idade do Ferro";
+        } else {
+            return "Pré-história";
+        }
+    }
+
+    public static String escolherPesquisador(String periodoAproximado, int tipoArtefato) {
+        if (periodoAproximado.equals("Idade moderna")) {
+            if (tipoArtefato == 1) {
+                return "Doutora Kassandra";
+            } else if (tipoArtefato == 2) {
+                return "Doutor Edward";
+            } else {
+                return "Doutor Cesare Borgia";
+            }
+        } else if (periodoAproximado.equals("Idade Média")) {
+            if (tipoArtefato == 1) {
+                return "Doutor Kenway";
+            } else if (tipoArtefato == 2) {
+                return "Doutor Ézio";
+            } else {
+                return "Doutor Rodrigo";
+            }
+        } else if (periodoAproximado.equals("Idade do Bronze")) {
+            if (tipoArtefato == 1) {
+                return "Doutor Alexios";
+            } else if (tipoArtefato == 2) {
+                return "Doutor Altair";
+            } else {
+                return "Doutor Cormac";
+            }
+        } else if (periodoAproximado.equals("Idade do Ferro")) {
+            if (tipoArtefato == 1) {
+                return "Doutor Alexios";
+            } else if (tipoArtefato == 2) {
+                return "Doutora Eivor
